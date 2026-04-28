@@ -2,7 +2,13 @@
   "snapshot_date": "2026-04-27",
   "source_corpus": "research/02_iris_articles_full.jsonl",
   "source_dossier": "research/01_stephano_dossier.md",
-  "corpus_years": [2022, 2023, 2024, 2025, 2026],
+  "corpus_years": [
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
   "papers_total": 592,
   "papers_per_year": {
     "2022": 23,
@@ -40,31 +46,97 @@
     "us_papers_with_state_inferred_count": 414,
     "us_papers_state_unknown_count": 50,
     "top_us_states": [
-      ["CA", 25.6],
-      ["NY", 7.5],
-      ["TX", 6.5],
-      ["NJ", 6.2],
-      ["MA", 6.2],
-      ["PA", 3.7],
-      ["VA", 3.4],
-      ["IL", 3.4],
-      ["FL", 3.0],
-      ["WA", 2.2]
+      [
+        "CA",
+        25.6
+      ],
+      [
+        "NY",
+        7.5
+      ],
+      [
+        "TX",
+        6.5
+      ],
+      [
+        "NJ",
+        6.2
+      ],
+      [
+        "MA",
+        6.2
+      ],
+      [
+        "PA",
+        3.7
+      ],
+      [
+        "VA",
+        3.4
+      ],
+      [
+        "IL",
+        3.4
+      ],
+      [
+        "FL",
+        3.0
+      ],
+      [
+        "WA",
+        2.2
+      ]
     ],
     "top_us_states_note": "Percent denominator is US-papers-with-state-inferred (n=414), not all US papers. 50 US rows had no inferable state. Per Iris extraction QA, 55.6 percent of country/state inferences are name-only; treat single-state numbers as approximate plus/minus 5 to 10 percentage points.",
     "top_non_us_countries": [
-      ["IN", 25],
-      ["CA", 14],
-      ["CN", 13],
-      ["GB", 12],
-      ["TW", 8],
-      ["KR", 7],
-      ["AE", 5],
-      ["TR", 5],
-      ["BD", 4],
-      ["HK", 3],
-      ["SG", 3],
-      ["JP", 3]
+      [
+        "IN",
+        25
+      ],
+      [
+        "CA",
+        14
+      ],
+      [
+        "CN",
+        13
+      ],
+      [
+        "GB",
+        12
+      ],
+      [
+        "TW",
+        8
+      ],
+      [
+        "KR",
+        7
+      ],
+      [
+        "AE",
+        5
+      ],
+      [
+        "TR",
+        5
+      ],
+      [
+        "BD",
+        4
+      ],
+      [
+        "HK",
+        3
+      ],
+      [
+        "SG",
+        3
+      ],
+      [
+        "JP",
+        3
+      ]
     ]
   },
   "mentor_named_pct": 48.8,
@@ -74,47 +146,155 @@
   "three_plus_author_share_pct": 29.2,
   "solo_author_share_pct": 0.2,
   "abstract_word_count_median": 234,
-  "abstract_word_count_range": [33, 303],
+  "abstract_word_count_range": [
+    33,
+    303
+  ],
   "abstract_cap_words": 250,
   "abstract_cap_source": "https://emerginginvestigators.org/submissions/manuscript-content",
   "recurring_lead_schools": [
-    ["Lexington High School", 7],
-    ["Monta Vista High School", 6],
-    ["The Harker School", 5],
-    ["Aspiring Scholars Directed Research Program", 4],
-    ["Acton-Boxborough Regional High School", 4],
-    ["Henry M. Gunn High School", 4],
-    ["Adlai E. Stevenson High School", 4],
-    ["Thomas Jefferson High School for Science and Technology, Alexandria, Virginia", 3],
-    ["Coppell High School", 3],
-    ["Dublin High School", 3],
-    ["Milton Academy, Milton, Massachusetts", 3],
-    ["Los Altos High School", 3],
-    ["Heritage International Xperiential School", 3],
-    ["Kang Chiao International School", 3],
-    ["Brooklyn Technical High School", 3],
-    ["Westwood High School", 3],
-    ["Mission San Jose High School", 3],
-    ["Bergen County Academies", 3],
-    ["Westlake High School", 3],
-    ["Phillips Exeter Academy", 3]
+    [
+      "Lexington High School",
+      7
+    ],
+    [
+      "Monta Vista High School",
+      6
+    ],
+    [
+      "The Harker School",
+      5
+    ],
+    [
+      "Aspiring Scholars Directed Research Program",
+      4
+    ],
+    [
+      "Acton-Boxborough Regional High School",
+      4
+    ],
+    [
+      "Henry M. Gunn High School",
+      4
+    ],
+    [
+      "Adlai E. Stevenson High School",
+      4
+    ],
+    [
+      "Thomas Jefferson High School for Science and Technology, Alexandria, Virginia",
+      3
+    ],
+    [
+      "Coppell High School",
+      3
+    ],
+    [
+      "Dublin High School",
+      3
+    ],
+    [
+      "Milton Academy, Milton, Massachusetts",
+      3
+    ],
+    [
+      "Los Altos High School",
+      3
+    ],
+    [
+      "Heritage International Xperiential School",
+      3
+    ],
+    [
+      "Kang Chiao International School",
+      3
+    ],
+    [
+      "Brooklyn Technical High School",
+      3
+    ],
+    [
+      "Westwood High School",
+      3
+    ],
+    [
+      "Mission San Jose High School",
+      3
+    ],
+    [
+      "Bergen County Academies",
+      3
+    ],
+    [
+      "Westlake High School",
+      3
+    ],
+    [
+      "Phillips Exeter Academy",
+      3
+    ]
   ],
   "recurring_mentor_affiliations": [
-    ["Radcliffe Department of Medicine, University of Oxford", 5],
-    ["Harvard University", 4],
-    ["Brown University", 4],
-    ["Stanford University", 4],
-    ["The University of Texas at Austin", 3],
-    ["University of Oxford", 3],
-    ["University of Pennsylvania", 3],
-    ["Department of Astronomy, Yale University", 3],
-    ["Arizona State University", 2],
-    ["Duke University, Durham, North Carolina", 2],
-    ["Emory University, Atlanta, Georgia", 2],
-    ["Brown School, Washington University in St. Louis", 2],
-    ["Harvard University, Cambridge, Massachusetts", 2],
-    ["Department of Physics and Astronomy, University of Pennsylvania", 2],
-    ["Department of Neurology, Massachusetts General Hospital", 2]
+    [
+      "Radcliffe Department of Medicine, University of Oxford",
+      5
+    ],
+    [
+      "Harvard University",
+      4
+    ],
+    [
+      "Brown University",
+      4
+    ],
+    [
+      "Stanford University",
+      4
+    ],
+    [
+      "The University of Texas at Austin",
+      3
+    ],
+    [
+      "University of Oxford",
+      3
+    ],
+    [
+      "University of Pennsylvania",
+      3
+    ],
+    [
+      "Department of Astronomy, Yale University",
+      3
+    ],
+    [
+      "Arizona State University",
+      2
+    ],
+    [
+      "Duke University, Durham, North Carolina",
+      2
+    ],
+    [
+      "Emory University, Atlanta, Georgia",
+      2
+    ],
+    [
+      "Brown School, Washington University in St. Louis",
+      2
+    ],
+    [
+      "Harvard University, Cambridge, Massachusetts",
+      2
+    ],
+    [
+      "Department of Physics and Astronomy, University of Pennsylvania",
+      2
+    ],
+    [
+      "Department of Neurology, Massachusetts General Hospital",
+      2
+    ]
   ],
   "submission_fee_usd": 45,
   "submission_fee_note": "Per JEI's own Submission Checklist as of 2026-04-27. Sources conflict (Polygence 2026 guide says free; Aralia says $35); JEI's own checklist is authoritative. Fee waivers available on request.",
@@ -139,7 +319,10 @@
   "scientific_review_first_pass_weeks_high": 10,
   "scientific_review_pass_source": "https://www.polygence.org/blog/guide-publishing-research-journal-emerging-investigators",
   "submission_window_type": "rolling",
-  "peak_submission_seasons": ["May to September", "December to January"],
+  "peak_submission_seasons": [
+    "May to September",
+    "December to January"
+  ],
   "peak_season_extra_delay_per_stage_weeks": 2,
   "submission_portal": "Editorial Manager",
   "submission_portal_note": "Email submissions not accepted. Submission must be performed by an adult, even when the student is 18.",
@@ -174,8 +357,16 @@
     "pre_matriculation_deadline": "Initial submission must occur prior to enrollment in university.",
     "minimum_authors": 2,
     "senior_author_required": true,
-    "senior_author_eligible": ["teacher", "college or university professor", "postdoctoral fellow", "senior graduate student", "parent (if research conducted at home)"],
-    "senior_author_ineligible": ["undergraduate student"],
+    "senior_author_eligible": [
+      "teacher",
+      "college or university professor",
+      "postdoctoral fellow",
+      "senior graduate student",
+      "parent (if research conducted at home)"
+    ],
+    "senior_author_ineligible": [
+      "undergraduate student"
+    ],
     "source": "https://emerginginvestigators.org/submissions/author-eligibility"
   },
   "indexing": {
@@ -222,5 +413,28 @@
     "Submitted and accepted dates are not exposed publicly; only published date is visible. Time-to-publication is uncomputable from this corpus.",
     "55.6 percent of country/state inferences are name-only; US-state numbers are approximate plus or minus 5 to 10 percentage points.",
     "Topic classifier is LLM-based on title plus abstract; cs_data slice in particular is dominated by ML-as-instrumentation papers, not pure CS."
-  ]
+  ],
+  "structural_norms": {
+    "full_word_count_median": 3209,
+    "full_word_count_q1": 2622,
+    "full_word_count_q3": 3920,
+    "figure_count_median": 4,
+    "figure_count_q1": 3,
+    "figure_count_q3": 6,
+    "table_count_median": 1,
+    "table_count_q1": 0,
+    "table_count_q3": 2,
+    "reference_count_median": 20,
+    "reference_count_q1": 14,
+    "reference_count_q3": 29,
+    "page_count_median": 7,
+    "page_count_q1": 6,
+    "page_count_q3": 8,
+    "supplementary_section_share_pct": 0.5,
+    "irb_iacuc_mention_share_pct": 4.1,
+    "methods_section_share_pct": 99.5,
+    "acknowledgments_section_share_pct": 52.0,
+    "structural_norms_corpus_size": 592,
+    "structural_norms_data_freshness": "2026-04-27"
+  }
 }

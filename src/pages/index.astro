@@ -155,6 +155,39 @@ const m = metrics;
       </div>
     </div>
 
+    <div class="rounded-xl border border-ink-300 bg-white p-6 mt-6">
+      <h3 class="font-semibold text-ink-900">Length, figures, references</h3>
+      <p class="text-sm text-ink-500 mt-1">
+        JEI's {m.manuscript_format.page_cap_intro_through_methods}-page Introduction-through-Methods cap is rarely the binding constraint. Real published papers cluster at the median, and a draft that lands far above or below that median is worth a structural review before submission. Numbers from a {m.structural_norms.structural_norms_corpus_size}-paper PDF pass.
+      </p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-ink-700">
+        <li>
+          <p class="text-xs uppercase tracking-wider text-ink-500">Typical paper</p>
+          <p class="mt-1">
+            Body words median <strong class="text-ink-900">{m.structural_norms.full_word_count_median.toLocaleString()}</strong> (Q1 to Q3, {m.structural_norms.full_word_count_q1.toLocaleString()} to {m.structural_norms.full_word_count_q3.toLocaleString()}); pages median <strong class="text-ink-900">{m.structural_norms.page_count_median}</strong> (Q1 to Q3, {m.structural_norms.page_count_q1} to {m.structural_norms.page_count_q3}).
+          </p>
+        </li>
+        <li>
+          <p class="text-xs uppercase tracking-wider text-ink-500">Typical visuals</p>
+          <p class="mt-1">
+            Figures median <strong class="text-ink-900">{m.structural_norms.figure_count_median}</strong> (Q1 to Q3, {m.structural_norms.figure_count_q1} to {m.structural_norms.figure_count_q3}); tables median <strong class="text-ink-900">{m.structural_norms.table_count_median}</strong> (Q1 to Q3, {m.structural_norms.table_count_q1} to {m.structural_norms.table_count_q3}).
+          </p>
+        </li>
+        <li>
+          <p class="text-xs uppercase tracking-wider text-ink-500">Typical references</p>
+          <p class="mt-1">
+            Median <strong class="text-ink-900">{m.structural_norms.reference_count_median}</strong> (Q1 to Q3, {m.structural_norms.reference_count_q1} to {m.structural_norms.reference_count_q3}). Counts under 10 are rare and usually a tell that the literature framing is thin.
+          </p>
+        </li>
+        <li>
+          <p class="text-xs uppercase tracking-wider text-ink-500">Section conventions</p>
+          <p class="mt-1">
+            Methods section present: <strong class="text-ink-900">{m.structural_norms.methods_section_share_pct}%</strong>. Acknowledgments: <strong class="text-ink-900">{m.structural_norms.acknowledgments_section_share_pct}%</strong>. IRB or IACUC mention: <strong class="text-ink-900">{m.structural_norms.irb_iacuc_mention_share_pct}%</strong>. Supplementary: <strong class="text-ink-900">{m.structural_norms.supplementary_section_share_pct}%</strong>.
+          </p>
+        </li>
+      </ul>
+    </div>
+
     <GeographyMap />
 
     <div class="rounded-xl border border-ink-300 bg-white p-6 mt-6">
