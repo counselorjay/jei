@@ -26,7 +26,11 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build
+        # Skip the prebuild step (build-widget-data.mjs) — it depends on
+        # research/ and output/ from the parent workspace which are not in
+        # this repo. The generated src/data/jei_widget_data.json is committed
+        # and stays current via local builds before push.
+        run: npx astro build
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
