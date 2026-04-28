@@ -25,11 +25,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Stage parent-workspace data for build
+        # src/pages/index.astro imports "../../../output/jei_metrics.json"
+        # which resolves outside the repo. Stage the committed copy at the
+        # expected relative location for CI builds.
+        run: |
+          mkdir -p ../output
+          cp ci-data/jei_metrics.json ../output/jei_metrics.json
+
       - name: Build
-        # Skip the prebuild step (build-widget-data.mjs) — it depends on
-        # research/ and output/ from the parent workspace which are not in
-        # this repo. The generated src/data/jei_widget_data.json is committed
-        # and stays current via local builds before push.
+        # Skip the prebuild step (build-widget-data.mjs); it depends on the
+        # full corpus JSONL which is not in the repo. The generated
+        # src/data/jei_widget_data.json is committed and refreshed locally.
         run: npx astro build
 
       - name: Deploy to Cloudflare Pages
