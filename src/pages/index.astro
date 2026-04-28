@@ -1,0 +1,383 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EligibilityWidget from '../components/EligibilityWidget.astro';
+import TopicDonut from '../components/TopicDonut.astro';
+import GeographyMap from '../components/GeographyMap.astro';
+import metrics from '../../../output/jei_metrics.json';
+
+const m = metrics;
+---
+<BaseLayout>
+  <!-- Hero -->
+  <section class="border-b border-ink-300/60">
+    <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+      <p class="text-xs uppercase tracking-widest text-accent-dark font-semibold">Counselor intelligence brief</p>
+      <h1 class="mt-2 text-3xl md:text-5xl font-semibold tracking-tight text-ink-900">
+        Journal of Emerging Investigators
+      </h1>
+      <p class="mt-4 text-lg text-ink-500 max-w-prose">
+        A counselor-facing guide to JEI as a publication path for middle and high school natural-science authors. What it is, who it suits, what gets published, and how to submit without tripping the eight most common rejection reasons.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3 text-sm">
+        <a href="#what-is-jei" class="inline-flex items-center rounded-md bg-accent px-4 py-2 text-white hover:bg-accent-dark">Read the brief</a>
+        <a href="#eligibility" class="inline-flex items-center rounded-md border border-accent text-accent-dark px-4 py-2 hover:bg-accent-soft">Check eligibility</a>
+      </div>
+      <p class="mt-6 text-xs text-ink-500">
+        Snapshot date {m.snapshot_date}. {m.papers_total} papers analyzed across {m.corpus_years[0]} to {m.corpus_years[m.corpus_years.length - 1]}.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 1: What is JEI -->
+  <section id="what-is-jei" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">1. What is JEI</h2>
+    <div class="mt-4 prose-content space-y-4 text-ink-700 max-w-prose">
+      <p>
+        JEI is the most credible peer-reviewed publication venue for middle and high school students in the natural sciences, and one of the very few that runs an actual editor-driven scientific review of a student manuscript. It has a real ISSN ({m.indexing.issn}), persistent DOIs (prefix {m.indexing.doi_prefix}), Harvard Medical School lineage, and a credentialed editorial board.
+      </p>
+      <p>
+        It is <strong>not</strong> the same thing as a "scholarly publication" the way a college reader might assume. By JEI's own FAQ, JEI articles are not indexed. PubMed will not return a JEI paper. Google Scholar will not return a JEI paper. DOAJ does not list JEI. The credibility comes from the rigor of the manuscript-writing experience and from the journal's lineage, not from database visibility.
+      </p>
+    </div>
+
+    <div class="mt-8 grid md:grid-cols-2 gap-5">
+      <div class="rounded-lg border border-emerald-300 bg-emerald-50 p-5">
+        <h3 class="font-semibold text-emerald-900">JEI is the right move when</h3>
+        <ul class="mt-3 space-y-2 text-sm text-emerald-950 list-disc pl-5">
+          <li>The student has run a hypothesis-driven natural-science study and has a senior author (teacher, professor, postdoc, senior grad student, or parent if research was done at home).</li>
+          <li>The student is in middle or high school, age 13 or older, and will submit before university enrollment.</li>
+          <li>The student wants the actual experience of authoring, revising, and shepherding a manuscript through peer review, and is willing to spend 8 to 12 months on it.</li>
+        </ul>
+      </div>
+      <div class="rounded-lg border border-rose-300 bg-rose-50 p-5">
+        <h3 class="font-semibold text-rose-900">JEI is the wrong move when</h3>
+        <ul class="mt-3 space-y-2 text-sm text-rose-950 list-disc pl-5">
+          <li>The project is pure computer science, pure mathematics, pure data mining, an invention or algorithm-as-the-subject, a literature review, or a commentary. Reframing as "ML used to test a biology hypothesis" is the workaround (see section 4).</li>
+          <li>The student needs a credential their reader will recognize from a database search. JEI is a depth credential, not a discovery credential.</li>
+          <li>The timeline is tight. Plan for 8 to 12 months from submission to PDF.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Eligibility -->
+  <section id="eligibility" class="bg-slate-50 border-y border-ink-300/60">
+    <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">2. Eligibility and timeline</h2>
+      <p class="mt-3 text-ink-500 max-w-prose">
+        Three structural filters decide whether a student can submit. Use the widget to check.
+      </p>
+
+      <EligibilityWidget />
+
+      <div class="mt-8 grid md:grid-cols-3 gap-4 text-sm">
+        <div class="rounded-lg border border-ink-300 bg-white p-4">
+          <p class="text-xs uppercase tracking-wider text-ink-500">Minimum age</p>
+          <p class="mt-1 text-2xl font-semibold text-ink-900">{m.eligibility.minimum_age_years}+</p>
+          <p class="mt-1 text-ink-500">Middle school or high school</p>
+        </div>
+        <div class="rounded-lg border border-ink-300 bg-white p-4">
+          <p class="text-xs uppercase tracking-wider text-ink-500">Minimum authors</p>
+          <p class="mt-1 text-2xl font-semibold text-ink-900">{m.eligibility.minimum_authors}</p>
+          <p class="mt-1 text-ink-500">Student plus senior author</p>
+        </div>
+        <div class="rounded-lg border border-ink-300 bg-white p-4">
+          <p class="text-xs uppercase tracking-wider text-ink-500">Plan for</p>
+          <p class="mt-1 text-2xl font-semibold text-ink-900">{m.time_to_publication_secondary_estimate_months_low} to {m.time_to_publication_secondary_estimate_months_high} months</p>
+          <p class="mt-1 text-ink-500">Submission to PDF</p>
+        </div>
+      </div>
+
+      <div class="mt-6 text-sm text-ink-700 space-y-3 max-w-prose">
+        <p>
+          <strong>Eligible senior authors:</strong> {m.eligibility.senior_author_eligible.join(', ')}.
+        </p>
+        <p>
+          <strong>Ineligible senior authors:</strong> {m.eligibility.senior_author_ineligible.join(', ')}. Programs that pair high schoolers with undergraduate mentors must add a faculty or postdoc senior author.
+        </p>
+        <p>
+          <strong>Hard deadline:</strong> initial submission must occur prior to enrollment in university. For senior-year clients with summer JEI plans, the manuscript must be in Editorial Manager before move-in date. Revisions after enrollment are still allowed; the rule applies to the initial submission only.
+        </p>
+        <p>
+          <strong>Submission economics:</strong> there is a per-manuscript submission fee, with fee waivers available on request. Sources outside JEI's own checklist conflict on the exact number, so always verify on
+          <a class="underline hover:text-accent-dark" target="_blank" rel="noopener noreferrer" href={m.submission_fee_source}>JEI's checklist</a>
+          at the moment of submission. There is no publication fee after acceptance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: What gets published -->
+  <section id="what-publishes" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">3. What gets published</h2>
+    <p class="mt-3 text-ink-500 max-w-prose">
+      The {m.papers_total}-paper corpus paints a coherent picture of the student JEI tends to publish. Topic mix first, then methodology, then the modal author and mentor pattern, then geography.
+    </p>
+
+    <TopicDonut />
+
+    <div class="grid md:grid-cols-2 gap-6 mt-2">
+      <div class="rounded-xl border border-ink-300 bg-white p-6">
+        <h3 class="font-semibold text-ink-900">Methodology mix</h3>
+        <p class="text-sm text-ink-500 mt-1">
+          Computational slightly outnumbers experimental. "Computational" here means ML, simulation, or image-pipeline applied to a biology, health, physics, or environmental hypothesis. Pure CS is editorially rejected.
+        </p>
+        <ul class="mt-4 space-y-2 text-sm">
+          {Object.entries(m.methodology_pct).map(([k, v]) => (
+            <li>
+              <div class="flex justify-between"><span class="font-medium capitalize">{k}</span><span class="text-ink-500">{v}%</span></div>
+              <div class="h-2 bg-slate-100 rounded-full mt-1 overflow-hidden">
+                <div class="h-full bg-accent" style={`width:${v}%`}></div>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="rounded-xl border border-ink-300 bg-white p-6 space-y-4 text-sm">
+        <div>
+          <h3 class="font-semibold text-ink-900">Mentor signal</h3>
+          <p class="mt-1 text-ink-500">
+            About <strong class="text-ink-900">{m.mentor_named_pct}%</strong> of papers name a university, hospital, institute, or research lab in the affiliation block. Structural signal, not a guaranteed PI relationship; treat it as a meaningful tailwind, especially for biology and health work where lab access shapes what experiments are possible.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-ink-900">Author structure</h3>
+          <p class="mt-1 text-ink-500">
+            Modal author count is <strong class="text-ink-900">{m.modal_author_count}</strong>. Two-author papers: {m.two_author_share_pct}%. Three or more: {m.three_plus_author_share_pct}%. Solo: {m.solo_author_share_pct}%. The canonical JEI paper is one student plus one senior mentor, both as named authors.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-ink-900">Abstract length</h3>
+          <p class="mt-1 text-ink-500">
+            Median <strong class="text-ink-900">{m.abstract_word_count_median} words</strong>, range {m.abstract_word_count_range[0]} to {m.abstract_word_count_range[1]}. JEI's cap is {m.abstract_cap_words}. Writing toward 230 to 245 words is already the published norm.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <GeographyMap />
+
+    <div class="rounded-xl border border-ink-300 bg-white p-6 mt-6">
+      <h3 class="font-semibold text-ink-900">Recurring lead schools (3 or more papers in corpus)</h3>
+      <p class="text-sm text-ink-500 mt-1">
+        Three buckets: Bay Area public-magnet pipelines, East Coast magnets and prep schools, and dedicated research programs (notably ASDRP). Counselors with clients outside these ecosystems should know the long tail of one-off schools is still the majority of the corpus.
+      </p>
+      <ul class="mt-4 grid sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm">
+        {m.recurring_lead_schools.map((row) => (
+          <li class="flex justify-between border-b border-ink-300/40 py-1">
+            <span class="text-ink-900 truncate pr-2">{row[0]}</span>
+            <span class="text-ink-500 tabular-nums">{row[1]}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Section 4: Hypothesis-driven rule -->
+  <section id="hypothesis-rule" class="bg-accent-soft/40 border-y border-accent/30">
+    <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">4. The hypothesis-driven rule</h2>
+      <p class="mt-3 max-w-prose text-ink-700">
+        This is the highest-leverage authoring rule in the brief. Catch it at the idea-formation stage and the student saves months. Miss it, and a months-long project is rejected on framing alone.
+      </p>
+
+      <div class="mt-6 rounded-lg border border-rose-300 bg-rose-50 p-5 max-w-prose">
+        <p class="font-semibold text-rose-900">The rule</p>
+        <p class="mt-2 text-sm text-rose-950">
+          JEI explicitly rejects manuscripts where the invention, method, or algorithm is the subject of the hypothesis. Pure CS, pure math, and data-mining are also out of scope.
+        </p>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-5">
+        <div class="rounded-lg border border-rose-300 bg-white p-5">
+          <p class="text-xs uppercase tracking-wider text-rose-700 font-semibold">Reject framing</p>
+          <p class="mt-2 text-ink-900 font-medium">"I built a CNN to classify retinopathy images."</p>
+          <p class="mt-2 text-sm text-ink-500">The algorithm is the subject. JEI rejects this.</p>
+        </div>
+        <div class="rounded-lg border border-emerald-300 bg-white p-5">
+          <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">Accepted framing</p>
+          <p class="mt-2 text-ink-900 font-medium">"I tested whether retinal vessel curvature predicts diabetic retinopathy progression, using a CNN to extract curvature features."</p>
+          <p class="mt-2 text-sm text-ink-500">Biology hypothesis. ML as instrumentation. This is the dominant published mode.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 rounded-lg border border-ink-300 bg-white p-5 text-sm text-ink-700 max-w-prose">
+        <p>
+          The corpus shows {m.topic_distribution_pct.cs_data}% in the CS / data slice, despite the editorial ban on pure CS, because students have learned to reframe ML and computational methods as instrumentation for hypotheses in biology, health, physics, chemistry, environmental, or behavioral science. If the student cannot state the hypothesis without naming the algorithm, the framing is wrong.
+        </p>
+      </div>
+
+      <details class="mt-6 rounded-lg border border-ink-300 bg-white p-5">
+        <summary class="cursor-pointer font-semibold">Topics JEI explicitly excludes</summary>
+        <ul class="mt-3 grid md:grid-cols-2 gap-x-6 gap-y-1 text-sm text-ink-700 list-disc pl-5">
+          {m.explicit_topic_exclusions.map((t) => (<li>{t}</li>))}
+        </ul>
+        <p class="mt-3 text-xs text-ink-500">
+          Source: <a class="underline hover:text-accent-dark" href={m.explicit_topic_exclusions_source} target="_blank" rel="noopener noreferrer">JEI's hypothesis-driven research page</a>.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Section 5: Submission roadmap -->
+  <section id="roadmap" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">5. Submission roadmap</h2>
+    <p class="mt-3 text-ink-500 max-w-prose">
+      Eight stages from idea to PDF. Numerical ranges are from JEI's own pages where available, and from public counselor-facing guides (Polygence and Aralia) where JEI is silent. JEI's own checklist at submission time is the authoritative source.
+    </p>
+
+    <ol class="mt-8 space-y-5">
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 1</span>
+          <h3 class="font-semibold text-ink-900">Idea formation (4 to 8 weeks before drafting)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          Choose a hypothesis-driven natural-science question. The student should be able to write the hypothesis as a one-sentence "If X, then Y, because Z" claim. This is the filter that decides whether the paper survives the first reviewer. Confirm category fit (see section 4). Lock in a senior author.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 2</span>
+          <h3 class="font-semibold text-ink-900">Regulatory clearance, if needed (parallel; weeks)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          For studies involving human subjects or vertebrate animals, IRB or IACUC documentation must be obtained and submitted with the manuscript. For most school-based projects without human subjects (computational, observational, plant, microbe), this stage is N/A.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 3</span>
+          <h3 class="font-semibold text-ink-900">Research execution (variable; weeks to a year)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          Collect data per the hypothesis. The Materials and Methods section will need to be written so a different scientist could reproduce the experiment. Designing for reproducibility from the start saves rewrite time later.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 4</span>
+          <h3 class="font-semibold text-ink-900">Manuscript drafting (4 to 8 weeks)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          Use JEI's manuscript template ({m.manuscript_format.template_format}). Submitting in a generic Word doc is rejection reason number one. Required sections in order:
+        </p>
+        <ul class="mt-2 text-sm text-ink-700 list-disc pl-5 space-y-0.5">
+          {m.manuscript_format.required_sections_in_order.map((s) => (<li>{s}</li>))}
+        </ul>
+        <p class="mt-2 text-sm text-ink-700">
+          Title cap: {m.manuscript_format.title_max_chars_including_spaces} characters including spaces. Summary cap: {m.manuscript_format.summary_max_words} words. Page cap: {m.manuscript_format.page_cap_intro_through_methods} pages, Introduction through Materials and Methods. Maximum {m.manuscript_format.max_figures_and_tables_combined} figures and tables combined. References in {m.manuscript_format.references_format}, all cited in body. All figures captioned.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 5</span>
+          <h3 class="font-semibold text-ink-900">Submission (1 day, performed by an adult)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          Portal: {m.submission_portal} only. Email submissions are not accepted. Submission must be performed by an adult, even when the student is 18. The fee is non-refundable and does not guarantee publication; verify the current fee on
+          <a class="underline hover:text-accent-dark" href={m.submission_fee_source} target="_blank" rel="noopener noreferrer">JEI's checklist</a>
+          at submission time, and request a fee waiver via JEI's waiver form if applicable. Hard deadline: initial submission must occur prior to enrollment in university.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 6</span>
+          <h3 class="font-semibold text-ink-900">Scientific review ({m.scientific_review_first_pass_weeks_low} to {m.scientific_review_first_pass_weeks_high} weeks per pass; multiple rounds typical)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          Rolling review, no submission windows. Three to four scientific reviewers per paper. Reviewers issue an Editor's Letter organized by manuscript section, with each comment tagged required vs recommended. Multiple revision rounds are typical; major revision then accept is the dominant outcome. Peak season slowdown of about {m.peak_season_extra_delay_per_stage_weeks} weeks per stage in {m.peak_submission_seasons.join(' and ')}. Wait at least one week past stated timelines before pinging editors.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 7</span>
+          <h3 class="font-semibold text-ink-900">Copy editing (variable; weeks)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          A copy editor produces line-level edits in Word with tracked changes; authors review. This is mechanical, not scientific.
+        </p>
+      </li>
+      <li class="rounded-lg border border-ink-300 bg-white p-5">
+        <div class="flex items-baseline gap-3">
+          <span class="text-xs font-semibold text-accent-dark">Stage 8</span>
+          <h3 class="font-semibold text-ink-900">Publishing (variable; weeks)</h3>
+        </div>
+        <p class="mt-2 text-sm text-ink-700">
+          A Proofing Editor produces the final PDF. The author's final pass is intentionally not a copy-edit pass. DOI is minted ({m.indexing.doi_prefix}/<id>). The article appears on emerginginvestigators.org/articles. JEI articles are not indexed in PubMed or Google Scholar; that is by design and not a defect.
+        </p>
+      </li>
+    </ol>
+  </section>
+
+  <!-- Section 6: Common pitfalls -->
+  <section id="pitfalls" class="bg-slate-50 border-y border-ink-300/60">
+    <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+      <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">6. Common pitfalls</h2>
+      <p class="mt-3 max-w-prose text-ink-700">
+        Per JEI's FAQ, the most common rejection reasons fall into eight mechanical categories plus the structural hypothesis-fit rule. A counselor running a basic pre-submission audit eliminates six of the eight.
+      </p>
+
+      <h3 class="mt-8 font-semibold text-ink-900">Mechanical (eliminable with a checklist)</h3>
+      <ol class="mt-3 grid md:grid-cols-2 gap-x-6 gap-y-2 text-sm text-ink-700 list-decimal pl-5">
+        {m.common_rejection_reasons.map((r) => (<li>{r}</li>))}
+      </ol>
+
+      <h3 class="mt-8 font-semibold text-ink-900">Structural (the two that need real authoring discipline)</h3>
+      <div class="mt-3 grid md:grid-cols-2 gap-5">
+        <div class="rounded-lg border border-ink-300 bg-white p-5">
+          <p class="font-semibold text-ink-900">Hypothesis fails the natural-science test</p>
+          <p class="mt-2 text-sm text-ink-700">
+            See section 4. The single most consequential authoring decision. Catch it at idea formation, not after months of work.
+          </p>
+        </div>
+        <div class="rounded-lg border border-ink-300 bg-white p-5">
+          <p class="font-semibold text-ink-900">Submit-before-matriculation cliff</p>
+          <p class="mt-2 text-sm text-ink-700">
+            For senior-year clients with summer JEI plans, the manuscript must be in {m.submission_portal} before move-in date. Revisions after enrollment are still allowed; the rule applies to the initial submission only.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Resources -->
+  <section id="resources" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
+    <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">7. Resources</h2>
+    <div class="mt-6 grid md:grid-cols-2 gap-5">
+      <a href="https://emerginginvestigators.org/submissions/checklist" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">Submission checklist</p>
+        <p class="mt-1 text-sm text-ink-500">The authoritative source for required documents, fee, and waiver instructions. Verify on this page at the moment of submission; secondary sources can be out of date.</p>
+      </a>
+      <a href="https://emerginginvestigators.org/submissions/author-eligibility" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">Author eligibility</p>
+        <p class="mt-1 text-sm text-ink-500">Age, school level, senior author rules, pre-matriculation deadline.</p>
+      </a>
+      <a href="https://emerginginvestigators.org/submissions/manuscript-content" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">Manuscript format and content</p>
+        <p class="mt-1 text-sm text-ink-500">Required sections, page caps, figure and table caps, reference style, template requirement.</p>
+      </a>
+      <a href="https://emerginginvestigators.org/submissions/hypothesis-driven-research" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">Hypothesis-driven research</p>
+        <p class="mt-1 text-sm text-ink-500">The editorial scope page. Read this before starting any project that leans CS, ML, or invention-build.</p>
+      </a>
+      <a href="https://emerginginvestigators.org/submissions/faq" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">FAQ</p>
+        <p class="mt-1 text-sm text-ink-500">The most common rejection reasons in JEI's own words. Indexing status is also stated here.</p>
+      </a>
+      <a href="https://emerginginvestigators.org/submissions/review-process/overview" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
+        <p class="font-semibold text-ink-900">Review process overview</p>
+        <p class="mt-1 text-sm text-ink-500">How the Editor's Letter is structured, how revisions are tagged required vs recommended, and how copy editing and proofing work after acceptance.</p>
+      </a>
+    </div>
+
+    <div class="mt-8 rounded-lg border border-warn/40 bg-warn-soft p-5 text-sm text-ink-700">
+      <p class="font-semibold text-warn">Always verify fees on JEI's own checklist.</p>
+      <p class="mt-2">
+        Public counselor-facing guides have published conflicting numbers. JEI's
+        <a class="underline hover:text-accent-dark" target="_blank" rel="noopener noreferrer" href={m.submission_fee_source}>own checklist</a>
+        is the only authoritative source. Fees, waivers, and policies can change; check at the moment of submission rather than relying on secondary summaries.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

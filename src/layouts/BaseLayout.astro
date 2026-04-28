@@ -1,0 +1,69 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Journal of Emerging Investigators: counselor intelligence brief',
+  description = 'A counselor-facing intelligence and submission guide for the Journal of Emerging Investigators (JEI), the peer-reviewed journal for middle and high school natural-science authors.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="article" />
+    <meta name="theme-color" content="#0e6e6b" />
+  </head>
+  <body class="bg-white text-ink-900 antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:bg-accent focus:text-white focus:px-3 focus:py-2 focus:rounded">
+      Skip to content
+    </a>
+    <header class="border-b border-ink-300/60">
+      <div class="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
+        <a href="/" class="font-semibold tracking-tight text-ink-900">
+          JEI Intelligence Brief
+        </a>
+        <nav aria-label="Section navigation" class="hidden md:block">
+          <ul class="flex gap-5 text-sm text-ink-500">
+            <li><a class="hover:text-accent-dark" href="#what-is-jei">What is JEI</a></li>
+            <li><a class="hover:text-accent-dark" href="#eligibility">Eligibility</a></li>
+            <li><a class="hover:text-accent-dark" href="#what-publishes">What publishes</a></li>
+            <li><a class="hover:text-accent-dark" href="#hypothesis-rule">Hypothesis rule</a></li>
+            <li><a class="hover:text-accent-dark" href="#roadmap">Roadmap</a></li>
+            <li><a class="hover:text-accent-dark" href="#pitfalls">Pitfalls</a></li>
+            <li><a class="hover:text-accent-dark" href="#resources">Resources</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="border-t border-ink-300/60 mt-16">
+      <div class="mx-auto max-w-5xl px-4 py-8 text-sm text-ink-500 space-y-2">
+        <p>
+          Maintained by Counselor Jay. Numbers on this page derive from a public-page corpus of 592 JEI articles spanning 2022 to 2026, plus JEI's own published documentation.
+        </p>
+        <p>
+          This site is not affiliated with the Journal of Emerging Investigators. Always verify eligibility, fees, and submission requirements on
+          <a class="underline hover:text-accent-dark" href="https://emerginginvestigators.org/submissions/checklist" target="_blank" rel="noopener noreferrer">JEI's own checklist</a>
+          at the moment of submission.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  :target { scroll-margin-top: 5rem; }
+  body { font-feature-settings: "ss01", "kern"; }
+</style>

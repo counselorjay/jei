@@ -1,0 +1,19 @@
+{
+  "name": "jei-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Journal of Emerging Investigators intelligence and submission guide for high school authors",
+  "scripts": {
+    "prebuild": "node scripts/build-widget-data.mjs",
+    "predev": "node scripts/build-widget-data.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/tailwind": "^6.0.0",
+    "tailwindcss": "^3.4.0"
+  }
+}

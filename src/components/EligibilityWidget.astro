@@ -1,0 +1,136 @@
+---
+// 3-question eligibility funnel. Pure HTML + a small inline script.
+// End states: fit / not_a_fit / reframe_needed.
+---
+<section
+  aria-labelledby="elig-widget-heading"
+  class="rounded-xl border border-accent/30 bg-accent-soft/40 p-6 md:p-8 my-6"
+>
+  <h3 id="elig-widget-heading" class="text-xl font-semibold tracking-tight text-ink-900">
+    Quick eligibility check
+  </h3>
+  <p class="mt-1 text-sm text-ink-500">
+    Three questions. No data leaves your browser.
+  </p>
+
+  <form id="elig-form" class="mt-5 space-y-5" data-elig-form>
+    <fieldset class="space-y-2">
+      <legend class="font-medium text-ink-700">1. Is the student age 13 or older?</legend>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q1" value="yes" required class="accent-accent" /> Yes
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q1" value="no" class="accent-accent" /> No
+      </label>
+    </fieldset>
+
+    <fieldset class="space-y-2">
+      <legend class="font-medium text-ink-700">
+        2. Is the student in middle or high school, and not yet matriculated at a university?
+      </legend>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q2" value="yes" required class="accent-accent" /> Yes
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q2" value="no" class="accent-accent" /> No (already enrolled, or not in MS/HS)
+      </label>
+    </fieldset>
+
+    <fieldset class="space-y-2">
+      <legend class="font-medium text-ink-700">
+        3. Is the project a hypothesis-driven natural-science study?
+      </legend>
+      <p class="text-xs text-ink-500">
+        Natural science means biology, chemistry, physics, earth and environmental science, or behavioral and social science with quantitative methods. Pure CS, pure math, literature reviews, inventions as the subject, or descriptive data-mining do not qualify.
+      </p>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q3" value="yes" required class="accent-accent" /> Yes
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q3" value="cs_or_invention" class="accent-accent" />
+        The project is a CS, ML, or invention build (the algorithm or device is the subject)
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q3" value="no" class="accent-accent" />
+        No (review, commentary, pure math, or a non-natural-science topic)
+      </label>
+    </fieldset>
+
+    <button
+      type="submit"
+      class="inline-flex items-center justify-center rounded-md bg-accent px-4 py-2 text-white font-medium hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent-dark"
+    >
+      See result
+    </button>
+  </form>
+
+  <div
+    id="elig-result"
+    class="mt-6 hidden rounded-lg p-5 border"
+    role="status"
+    aria-live="polite"
+    data-elig-result
+  ></div>
+</section>
+
+<script is:inline>
+  (function () {
+    const form = document.querySelector('[data-elig-form]');
+    const out = document.querySelector('[data-elig-result]');
+    if (!form || !out) return;
+
+    const STATES = {
+      fit: {
+        cls: 'border-emerald-300 bg-emerald-50 text-emerald-900',
+        title: 'JEI looks like a fit.',
+        body:
+          'On these three filters, the student qualifies. Next steps: confirm a senior author (teacher, professor, postdoc, senior grad student, or parent if research is at home), plan for an 8 to 12 month timeline, and start drafting in JEI’s manuscript template. See the Submission roadmap section below.',
+      },
+      not_a_fit: {
+        cls: 'border-rose-300 bg-rose-50 text-rose-900',
+        title: 'JEI is not the right venue.',
+        body:
+          'JEI requires age 13+, middle or high school, and pre-matriculation submission. If any of those is a no, the student should look at other publication paths. Counselors: keep the student’s research; the venue is the constraint, not the work.',
+      },
+      reframe_needed: {
+        cls: 'border-amber-300 bg-amber-50 text-amber-900',
+        title: 'Reframe likely needed.',
+        body:
+          'JEI explicitly rejects manuscripts where the algorithm, method, or invention is the subject of the hypothesis. Many CS and ML projects can still publish at JEI if reframed: the hypothesis must point at a biology, health, physics, chemistry, environmental, or behavioral question, with the algorithm as the tool used to answer it. See the Hypothesis rule section below for good vs reject framings.',
+      },
+      reframe_topic: {
+        cls: 'border-amber-300 bg-amber-50 text-amber-900',
+        title: 'Topic is out of scope.',
+        body:
+          'JEI publishes hypothesis-driven natural-science work. Reviews, commentaries, pure math, and non-natural-science topics fall outside scope. If the underlying study can be reformulated as a hypothesis-driven natural-science question, the student may still have a path; if not, JEI is not the right venue.',
+      },
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const q1 = data.get('q1');
+      const q2 = data.get('q2');
+      const q3 = data.get('q3');
+
+      let key;
+      if (q1 === 'no' || q2 === 'no') {
+        key = 'not_a_fit';
+      } else if (q3 === 'cs_or_invention') {
+        key = 'reframe_needed';
+      } else if (q3 === 'no') {
+        key = 'reframe_topic';
+      } else {
+        key = 'fit';
+      }
+
+      const s = STATES[key];
+      out.className = 'mt-6 rounded-lg p-5 border ' + s.cls;
+      out.innerHTML =
+        '<p class="font-semibold">' + s.title + '</p>' +
+        '<p class="mt-2 text-sm leading-relaxed">' + s.body + '</p>';
+      out.hidden = false;
+      out.classList.remove('hidden');
+    });
+  })();
+</script>

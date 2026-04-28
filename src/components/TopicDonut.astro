@@ -1,0 +1,181 @@
+---
+import widgetData from '../data/jei_widget_data.json';
+
+// Order of slices: keep the brief's order so labels stay consistent.
+const ORDER = ['cs_data', 'behavioral_social', 'biology', 'physics', 'chemistry', 'earth_env', 'engineering', 'math', 'other'];
+const PALETTE = {
+  cs_data: '#0e6e6b',
+  behavioral_social: '#1e6091',
+  biology: '#2a9d8f',
+  physics: '#e76f51',
+  chemistry: '#f4a261',
+  earth_env: '#588157',
+  engineering: '#6d597a',
+  math: '#8d99ae',
+  other: '#94a3b8',
+};
+
+const distribution = widgetData.topic_distribution_pct;
+
+const total = ORDER.reduce((sum, k) => sum + (distribution[k] || 0), 0);
+
+// Donut geometry
+const cx = 110;
+const cy = 110;
+const r = 90;
+const inner = 56;
+
+let cumulative = 0;
+const slices = ORDER.map((k) => {
+  const pct = distribution[k] || 0;
+  const start = (cumulative / total) * Math.PI * 2 - Math.PI / 2;
+  cumulative += pct;
+  const end = (cumulative / total) * Math.PI * 2 - Math.PI / 2;
+
+  const x1 = cx + r * Math.cos(start);
+  const y1 = cy + r * Math.sin(start);
+  const x2 = cx + r * Math.cos(end);
+  const y2 = cy + r * Math.sin(end);
+  const xi1 = cx + inner * Math.cos(end);
+  const yi1 = cy + inner * Math.sin(end);
+  const xi2 = cx + inner * Math.cos(start);
+  const yi2 = cy + inner * Math.sin(start);
+  const largeArc = end - start > Math.PI ? 1 : 0;
+
+  const path = [
+    `M ${x1.toFixed(2)} ${y1.toFixed(2)}`,
+    `A ${r} ${r} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)}`,
+    `L ${xi1.toFixed(2)} ${yi1.toFixed(2)}`,
+    `A ${inner} ${inner} 0 ${largeArc} 0 ${xi2.toFixed(2)} ${yi2.toFixed(2)}`,
+    'Z',
+  ].join(' ');
+
+  return {
+    key: k,
+    label: widgetData.topic_examples[k]?.label ?? k,
+    pct,
+    color: PALETTE[k] || '#94a3b8',
+    path,
+    examples: widgetData.topic_examples[k]?.examples ?? [],
+    count: widgetData.topic_examples[k]?.count ?? 0,
+  };
+});
+
+const examplesById = Object.fromEntries(slices.map((s) => [s.key, { label: s.label, count: s.count, examples: s.examples }]));
+---
+
+<section
+  aria-labelledby="donut-heading"
+  class="rounded-xl border border-ink-300 bg-white p-6 md:p-8 my-6"
+>
+  <h3 id="donut-heading" class="text-xl font-semibold tracking-tight text-ink-900">
+    Topic mix of the published archive
+  </h3>
+  <p class="mt-1 text-sm text-ink-500">
+    Click a slice to see representative published titles. Source: 592-paper corpus, 2022 to 2026.
+  </p>
+
+  <div class="mt-6 grid md:grid-cols-2 gap-6 items-start">
+    <div class="flex flex-col items-center">
+      <svg
+        viewBox="0 0 220 220"
+        class="w-64 h-64"
+        role="img"
+        aria-labelledby="donut-title-text"
+      >
+        <title id="donut-title-text">Topic mix donut chart</title>
+        {slices.map((s) => (
+          <path
+            d={s.path}
+            fill={s.color}
+            stroke="white"
+            stroke-width="1"
+            class="cursor-pointer transition-opacity hover:opacity-80 focus:opacity-80 focus:outline-none"
+            data-topic-slice={s.key}
+            tabindex="0"
+            aria-label={`${s.label}: ${s.pct} percent`}
+          />
+        ))}
+        <text
+          x={cx}
+          y={cy - 4}
+          text-anchor="middle"
+          class="fill-ink-700"
+          font-size="14"
+          font-weight="600"
+        >592 papers</text>
+        <text
+          x={cx}
+          y={cy + 14}
+          text-anchor="middle"
+          class="fill-ink-500"
+          font-size="11"
+        >2022 to 2026</text>
+      </svg>
+
+      <ul class="mt-4 grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-ink-700">
+        {slices.map((s) => (
+          <li class="flex items-center gap-2">
+            <span class="inline-block w-3 h-3 rounded-sm" style={`background:${s.color}`}></span>
+            <span class="font-medium">{s.label}</span>
+            <span class="text-ink-500">{s.pct}%</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div
+      id="donut-detail"
+      class="rounded-lg border border-ink-300 bg-slate-50 p-4 min-h-[14rem]"
+      aria-live="polite"
+    >
+      <p class="text-sm text-ink-500">
+        Pick a slice to see five representative published titles in that topic.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="donut-examples-data" set:html={JSON.stringify(examplesById)}></script>
+
+<script is:inline>
+  (function () {
+    const dataEl = document.getElementById('donut-examples-data');
+    if (!dataEl) return;
+    const data = JSON.parse(dataEl.textContent || '{}');
+    const detail = document.getElementById('donut-detail');
+    if (!detail) return;
+
+    function render(key) {
+      const item = data[key];
+      if (!item) return;
+      const list = item.examples
+        .map(function (e) {
+          const meta = [e.year, e.lead_school].filter(Boolean).join(' &middot; ');
+          return (
+            '<li class="text-sm leading-snug">' +
+            '<p class="font-medium text-ink-900">' + e.title + '</p>' +
+            (meta ? '<p class="text-xs text-ink-500 mt-0.5">' + meta + '</p>' : '') +
+            '</li>'
+          );
+        })
+        .join('');
+      detail.innerHTML =
+        '<p class="text-sm text-ink-500">' + item.count + ' papers in this topic</p>' +
+        '<h4 class="mt-1 font-semibold text-ink-900">' + item.label + '</h4>' +
+        '<ul class="mt-3 space-y-3">' + list + '</ul>';
+    }
+
+    document.querySelectorAll('[data-topic-slice]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        render(el.getAttribute('data-topic-slice'));
+      });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          render(el.getAttribute('data-topic-slice'));
+        }
+      });
+    });
+  })();
+</script>

@@ -1,0 +1,437 @@
+{
+  "generated_at": "2026-04-28T02:32:06.140Z",
+  "source": "research/02_iris_articles_full.jsonl",
+  "corpus_total": 592,
+  "topic_distribution_pct": {
+    "cs_data": 26.5,
+    "behavioral_social": 20.3,
+    "biology": 18.6,
+    "physics": 9.5,
+    "chemistry": 9,
+    "earth_env": 7.8,
+    "engineering": 6.4,
+    "math": 1.4,
+    "other": 0.7
+  },
+  "topic_examples": {
+    "cs_data": {
+      "label": "CS / data",
+      "count": 157,
+      "examples": [
+        {
+          "title": "A comparative study of dynamic scoring formulas for capture-the-flag competitions",
+          "year": 2024,
+          "lead_school": "Mathematics, Franklin High School",
+          "doi": "10.59720/23-173"
+        },
+        {
+          "title": "A HOG feature extraction and CNN approach to Parkinson’s spiral drawing diagnosis",
+          "year": 2024,
+          "lead_school": "Edison Academy Magnet School",
+          "doi": "10.59720/24-048"
+        },
+        {
+          "title": "A machine learning approach to detect renal calculi by studying the physical characteristics of urine",
+          "year": 2024,
+          "lead_school": "Auxilium Convent School",
+          "doi": "10.59720/23-066"
+        },
+        {
+          "title": "A meta-analysis on NIST post-quantum cryptographic primitive finalists",
+          "year": 2024,
+          "lead_school": "Foothill High School",
+          "doi": "10.59720/23-233"
+        },
+        {
+          "title": "A natural language processing approach to skill identification in the job market",
+          "year": 2024,
+          "lead_school": "MOT Charter High School",
+          "doi": "10.59720/24-068"
+        }
+      ]
+    },
+    "behavioral_social": {
+      "label": "Behavioral / social",
+      "count": 120,
+      "examples": [
+        {
+          "title": "A statistical analysis and generalized linear models of cerebral stroke",
+          "year": 2024,
+          "lead_school": "James M. Bennett High School",
+          "doi": "10.59720/23-236"
+        },
+        {
+          "title": "Adults’ attitudes toward non-alcoholic beer purchases and consumption by children and adolescents",
+          "year": 2024,
+          "lead_school": "John Burroughs School",
+          "doi": "10.59720/23-073"
+        },
+        {
+          "title": "Analyzing the relationships between years of experience and performance anxiety in teen volleyball players",
+          "year": 2024,
+          "lead_school": "Clearview Regional High School",
+          "doi": "10.59720/23-136"
+        },
+        {
+          "title": "Changing electronic use behavior in adolescents while studying: An interventional psychology experiment",
+          "year": 2024,
+          "lead_school": "Mount Desert Island High School",
+          "doi": "10.59720/22-167"
+        },
+        {
+          "title": "Country-level relationship of OTC medicine consumption and frequency of GP consultation",
+          "year": 2024,
+          "lead_school": "Senzoku Gakuen Junior &amp; Senior High School",
+          "doi": "10.59720/24-002"
+        }
+      ]
+    },
+    "biology": {
+      "label": "Biology",
+      "count": 110,
+      "examples": [
+        {
+          "title": "Analyzing the effect of mycorrhizal fungi on plant communication of nutrients",
+          "year": 2024,
+          "lead_school": "Mount Olive High School",
+          "doi": "10.59720/20-132"
+        },
+        {
+          "title": "Anti-inflammatory and pro-apoptotic properties of the polyherbal drug, MAT20, in MCF-7 cells",
+          "year": 2024,
+          "lead_school": "The International School Bangalore",
+          "doi": "10.59720/23-129"
+        },
+        {
+          "title": "Antibacterial activity of homemade Indian tomato tamarind soup (rasam) against common pathogens",
+          "year": 2024,
+          "lead_school": "GEMS Modern Academy",
+          "doi": "10.59720/23-278"
+        },
+        {
+          "title": "Assessing the possibility of using entomopathogenic fungi for mosquito control in Hawaii",
+          "year": 2024,
+          "lead_school": "Iolani School",
+          "doi": "10.59720/23-224"
+        },
+        {
+          "title": "Contribution of environmental factors to genetic variation in the Pacific white-sided dolphin",
+          "year": 2024,
+          "lead_school": "Lakeside School",
+          "doi": "10.59720/23-078"
+        }
+      ]
+    },
+    "physics": {
+      "label": "Physics",
+      "count": 56,
+      "examples": [
+        {
+          "title": "Analyzing the effects of multiple adhesives on elastic collisions and energy loss in a Newton’s Cradle",
+          "year": 2024,
+          "lead_school": "D.C. Everest Senior High School",
+          "doi": "10.59720/23-091"
+        },
+        {
+          "title": "Calculating the dynamic viscosity of a fluid using image processing of a falling ball",
+          "year": 2024,
+          "lead_school": "Camlica Anatolian High School",
+          "doi": "10.59720/23-198"
+        },
+        {
+          "title": "Color photometry and light curve modeling of apparent transient 2023jri",
+          "year": 2024,
+          "lead_school": "St. Francis High School",
+          "doi": "10.59720/23-309"
+        },
+        {
+          "title": "Effects of noise on information corruption in the quantum teleportation algorithm",
+          "year": 2024,
+          "lead_school": "West Windsor-Plainsboro High School North",
+          "doi": "10.59720/23-101"
+        },
+        {
+          "title": "Enhancing the quantum efficiency of a silicon solar cell using one dimensional thin film interferometry",
+          "year": 2024,
+          "lead_school": "Heritage International Xperiential School",
+          "doi": "10.59720/23-023"
+        }
+      ]
+    },
+    "chemistry": {
+      "label": "Chemistry",
+      "count": 53,
+      "examples": [
+        {
+          "title": "An alternative to textile dyes: Synthesizing and applying PMMA nanoparticles to create structural coloration",
+          "year": 2024,
+          "lead_school": "‘Iolani School",
+          "doi": "10.59720/22-179"
+        },
+        {
+          "title": "Analysis of electrodialysis as a method of producing potable water",
+          "year": 2024,
+          "lead_school": "Palos Verdes High School",
+          "doi": "10.59720/23-010"
+        },
+        {
+          "title": "Comparison of total flavonoid content and DPPH● sequestration in Arabica, Robusta, and Liberica coffee beans",
+          "year": 2024,
+          "lead_school": "Evergreen Valley High School",
+          "doi": "10.59720/23-270"
+        },
+        {
+          "title": "Determining degree of dissociation through conductivity",
+          "year": 2024,
+          "lead_school": "Milton Academy",
+          "doi": "10.59720/22-286"
+        },
+        {
+          "title": "Development of selective RAC1/KLRN inhibitors",
+          "year": 2024,
+          "lead_school": "St. Clare&#39;s School",
+          "doi": "10.59720/24-033"
+        }
+      ]
+    },
+    "earth_env": {
+      "label": "Earth / environment",
+      "count": 46,
+      "examples": [
+        {
+          "title": "An exploration of western mosquitofish as the animal component in an aquaponic farming system",
+          "year": 2024,
+          "lead_school": "Environmental Academy, TERRA Environmental Institute",
+          "doi": "10.59720/24-042"
+        },
+        {
+          "title": "Assessing the association between developed surface area and land surface temperature of urban areas",
+          "year": 2024,
+          "lead_school": "Mastery School of Hawken",
+          "doi": "10.59720/23-235"
+        },
+        {
+          "title": "Behaviors and attitudes concerning disposable masks and the environment: A D.C. high school case study",
+          "year": 2024,
+          "lead_school": "Sidwell Friends School",
+          "doi": "10.59720/23-194"
+        },
+        {
+          "title": "Correlation between particulate matter concentrations and COPD hospitalization rates in Massachusetts",
+          "year": 2024,
+          "lead_school": "Acton-Boxborough Regional High School",
+          "doi": "10.59720/24-112"
+        },
+        {
+          "title": "Efficacy of natural coagulants in reducing water turbidity under future climate change scenarios",
+          "year": 2024,
+          "lead_school": "Farragut High School",
+          "doi": "10.59720/23-104"
+        }
+      ]
+    },
+    "engineering": {
+      "label": "Engineering",
+      "count": 38,
+      "examples": [
+        {
+          "title": "A novel calibration algorithm and its effects on heading measurement accuracy of a low-cost magnetometer",
+          "year": 2024,
+          "lead_school": "Carroll Senior High School",
+          "doi": "10.59720/23-153"
+        },
+        {
+          "title": "Automated dynamic lighting control system to reduce energy consumption in daylight",
+          "year": 2024,
+          "lead_school": "GEMS Modern Academy",
+          "doi": "10.59720/23-135"
+        },
+        {
+          "title": "Experimental characterization of thrust for ≤ 20 N-s impulse solid rocket motors",
+          "year": 2024,
+          "lead_school": "Westlake High School",
+          "doi": "10.59720/23-229"
+        },
+        {
+          "title": "Floor level estimation using MEMS pressure sensors",
+          "year": 2024,
+          "lead_school": "Jones College Preparatory High School",
+          "doi": "10.59720/23-064"
+        },
+        {
+          "title": "Identification of microwave-related changes in tissue using an ultrasound scan",
+          "year": 2024,
+          "lead_school": "Curtis Junior High School",
+          "doi": "10.59720/23-117"
+        }
+      ]
+    },
+    "math": {
+      "label": "Math",
+      "count": 8,
+      "examples": [
+        {
+          "title": "An assessment of controllable etiological factors involved in neonatal seizure using a Monte Carlo model",
+          "year": 2025,
+          "lead_school": "George W. Hewlett High School",
+          "doi": "10.59720/24-054"
+        },
+        {
+          "title": "Exploring the Factors that Drive Coffee Ratings",
+          "year": 2025,
+          "lead_school": "Wilmington Friends School",
+          "doi": "10.59720/24-199"
+        },
+        {
+          "title": "Modeling the moving sofas in circular hallways using geometric methods",
+          "year": 2025,
+          "lead_school": "Monta Vista High School",
+          "doi": "10.59720/24-384"
+        },
+        {
+          "title": "Practical applications of the Fourier analysis to identify pitches and synthesize sounds in music",
+          "year": 2025,
+          "lead_school": "Dhirubhai Ambani International School",
+          "doi": "10.59720/24-155"
+        },
+        {
+          "title": "A new scale of mathematical problem complexity and its application to understanding fear of mathematics",
+          "year": 2023,
+          "lead_school": "Treamis World School",
+          "doi": "10.59720/23-089"
+        }
+      ]
+    },
+    "other": {
+      "label": "Other",
+      "count": 4,
+      "examples": [
+        {
+          "title": "Effects of alveolar bone grafts vs. orthognathic surgery on cleft palate speech nasalance: a meta-analysis",
+          "year": 2024,
+          "lead_school": "San Marino High School",
+          "doi": "10.59720/24-003"
+        },
+        {
+          "title": "A comparative study of food labels in the United States and India: Adherence to Codex Alimentarius guidelines",
+          "year": 2025,
+          "lead_school": "Rock Hill High School",
+          "doi": "10.59720/24-180"
+        },
+        {
+          "title": "The availability of a poetry tutor prompts inexperienced writers to explore deeply emotional themes",
+          "year": 2025,
+          "lead_school": "Phillips Exeter Academy",
+          "doi": "10.59720/24-350"
+        },
+        {
+          "title": "Unraveling individuality in dance through weight distribution analysis of Nihon Buyo dancers",
+          "year": 2025,
+          "lead_school": "American School in Japan",
+          "doi": "10.59720/24-332"
+        }
+      ]
+    }
+  },
+  "geography": {
+    "us_pct": 78.4,
+    "non_us_pct": 20.8,
+    "unknown_pct": 0.8,
+    "us_papers_count": 464,
+    "us_papers_with_state_inferred_count": 414,
+    "us_papers_state_unknown_count": 50,
+    "top_us_states": [
+      [
+        "CA",
+        25.6
+      ],
+      [
+        "NY",
+        7.5
+      ],
+      [
+        "TX",
+        6.5
+      ],
+      [
+        "NJ",
+        6.2
+      ],
+      [
+        "MA",
+        6.2
+      ],
+      [
+        "PA",
+        3.7
+      ],
+      [
+        "VA",
+        3.4
+      ],
+      [
+        "IL",
+        3.4
+      ],
+      [
+        "FL",
+        3
+      ],
+      [
+        "WA",
+        2.2
+      ]
+    ],
+    "top_us_states_note": "Percent denominator is US-papers-with-state-inferred (n=414), not all US papers. 50 US rows had no inferable state. Per Iris extraction QA, 55.6 percent of country/state inferences are name-only; treat single-state numbers as approximate plus/minus 5 to 10 percentage points.",
+    "top_non_us_countries": [
+      [
+        "IN",
+        25
+      ],
+      [
+        "CA",
+        14
+      ],
+      [
+        "CN",
+        13
+      ],
+      [
+        "GB",
+        12
+      ],
+      [
+        "TW",
+        8
+      ],
+      [
+        "KR",
+        7
+      ],
+      [
+        "AE",
+        5
+      ],
+      [
+        "TR",
+        5
+      ],
+      [
+        "BD",
+        4
+      ],
+      [
+        "HK",
+        3
+      ],
+      [
+        "SG",
+        3
+      ],
+      [
+        "JP",
+        3
+      ]
+    ]
+  }
+}
