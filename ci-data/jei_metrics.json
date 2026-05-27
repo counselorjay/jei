@@ -1,5 +1,8 @@
 {
   "snapshot_date": "2026-04-27",
+  "policy_checked_date": "2026-05-27",
+  "current_scope_effective_date": "2026-03-10",
+  "current_scope_summary": "For new submissions, JEI limits its core scope to manuscripts that clearly test a hypothesis in natural sciences, specifically life sciences and experimental physical sciences. Historical archive patterns remain useful for precedent but do not override the current scope page.",
   "source_corpus": "research/02_iris_articles_full.jsonl",
   "source_dossier": "research/01_stephano_dossier.md",
   "corpus_years": [
@@ -29,7 +32,7 @@
     "math": 1.4,
     "other": 0.7
   },
-  "topic_distribution_note": "LLM-classified per-paper via qwen3.6:35b. 'cs_data' here means CS-as-instrumentation for a non-CS hypothesis; pure CS is editorially rejected by JEI per https://emerginginvestigators.org/submissions/hypothesis-driven-research.",
+  "topic_distribution_note": "LLM-classified per-paper via qwen3.6:35b. This is historical archive intelligence, not current-submission eligibility. 'cs_data' here often means CS-as-instrumentation for a non-CS hypothesis; pure CS is editorially rejected by JEI per https://emerginginvestigators.org/submissions/hypothesis-driven-research.",
   "methodology_pct": {
     "computational": 48.6,
     "experimental": 36.1,
@@ -392,27 +395,40 @@
   ],
   "common_rejection_reasons_source": "https://emerginginvestigators.org/submissions/faq",
   "explicit_topic_exclusions": [
-    "pure mathematics",
-    "pure statistics",
-    "pure theoretical science",
+    "mathematics",
+    "statistics",
+    "mathematical modeling unless it has supporting experiments",
+    "theoretical science",
     "political science",
     "economics",
     "history",
     "linguistics",
-    "computer science as the subject of the hypothesis",
+    "computer science",
     "reviews",
     "theorems",
     "commentaries",
-    "descriptive or discovery research including data mining",
-    "molecular-docking-only studies",
-    "inventions or engineering where the invention or method or algorithm is the subject of the hypothesis"
+    "descriptive or discovery research",
+    "data mining without a pre-registered hypothesis",
+    "molecular docking used as discovery-only research",
+    "manuscripts that only introduce, optimize, or compare an invention, model, method, or algorithm",
+    "manuscripts that do not test a clear hypothesis"
+  ],
+  "restricted_or_case_by_case_topics": [
+    "public health",
+    "psychology",
+    "social sciences",
+    "sociopolitically sensitive topics",
+    "meta-analyses",
+    "manuscripts that require additional ethical approval"
   ],
   "explicit_topic_exclusions_source": "https://emerginginvestigators.org/submissions/hypothesis-driven-research",
   "data_caveats": [
+    "JEI updated its scope on March 10, 2026. The 2022 to early-2026 corpus includes articles accepted under older scope expectations and should not be treated as current eligibility evidence.",
     "Word, figure, table, and reference counts are not on JEI HTML article pages and are NULL in this corpus; PDF parsing pass would unlock them.",
     "Submitted and accepted dates are not exposed publicly; only published date is visible. Time-to-publication is uncomputable from this corpus.",
     "55.6 percent of country/state inferences are name-only; US-state numbers are approximate plus or minus 5 to 10 percentage points.",
-    "Topic classifier is LLM-based on title plus abstract; cs_data slice in particular is dominated by ML-as-instrumentation papers, not pure CS."
+    "Topic classifier is LLM-based on title plus abstract; cs_data slice in particular is dominated by ML-as-instrumentation papers, not pure CS.",
+    "Behavioral, social-science, psychology, and public-health archive examples require current-scope review before being used as advising precedent."
   ],
   "structural_norms": {
     "full_word_count_median": 3209,

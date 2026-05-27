@@ -1,5 +1,5 @@
 ---
-// 3-question eligibility funnel. Pure HTML + a small inline script.
+// 4-question eligibility funnel. Pure HTML + a small inline script.
 // End states: fit / not_a_fit / reframe_needed.
 ---
 <section
@@ -10,7 +10,7 @@
     Quick eligibility check
   </h3>
   <p class="mt-1 text-sm text-ink-500">
-    Three questions. No data leaves your browser.
+    Four questions. No data leaves your browser.
   </p>
 
   <form id="elig-form" class="mt-5 space-y-5" data-elig-form>
@@ -38,21 +38,41 @@
 
     <fieldset class="space-y-2">
       <legend class="font-medium text-ink-700">
-        3. Is the project a hypothesis-driven natural-science study?
+        3. Is the project centered in life sciences or experimental physical sciences?
       </legend>
       <p class="text-xs text-ink-500">
-        Natural science means biology, chemistry, physics, earth and environmental science, or behavioral and social science with quantitative methods. Pure CS, pure math, literature reviews, inventions as the subject, or descriptive data-mining do not qualify.
+        JEI's current scope centers on life sciences and experimental physical sciences. Psychology, social sciences, public health, meta-analyses, and sensitive topics are restricted or case-by-case.
       </p>
       <label class="flex items-center gap-2">
         <input type="radio" name="q3" value="yes" required class="accent-accent" /> Yes
       </label>
       <label class="flex items-center gap-2">
-        <input type="radio" name="q3" value="cs_or_invention" class="accent-accent" />
-        The project is a CS, ML, or invention build (the algorithm or device is the subject)
+        <input type="radio" name="q3" value="restricted" class="accent-accent" />
+        Case-by-case area (psychology, social science, public health, meta-analysis, or sensitive topic)
       </label>
       <label class="flex items-center gap-2">
         <input type="radio" name="q3" value="no" class="accent-accent" />
-        No (review, commentary, pure math, or a non-natural-science topic)
+        No (math, statistics, computer science, economics, history, linguistics, theory-only, review, or commentary)
+      </label>
+    </fieldset>
+
+    <fieldset class="space-y-2">
+      <legend class="font-medium text-ink-700">
+        4. Does the manuscript test a clear hypothesis about the science, rather than the tool?
+      </legend>
+      <p class="text-xs text-ink-500">
+        Models, algorithms, docking, surveys, devices, and data analysis can be tools. They should not be the subject of the hypothesis.
+      </p>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q4" value="yes" required class="accent-accent" /> Yes
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q4" value="tool_subject" class="accent-accent" />
+        The model, method, algorithm, invention, or dataset pattern is the main claim
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="radio" name="q4" value="unclear" class="accent-accent" />
+        Unclear, the hypothesis still names the tool or method
       </label>
     </fieldset>
 
@@ -84,25 +104,31 @@
         cls: 'border-emerald-300 bg-emerald-50 text-emerald-900',
         title: 'JEI looks like a fit.',
         body:
-          'On these three filters, the student qualifies. Next steps: confirm a senior author (teacher, professor, postdoc, senior grad student, or parent if research is at home), plan for an 8 to 12 month timeline, and start drafting in JEI’s manuscript template. See the Submission roadmap section below.',
+          'On these four filters, the student qualifies. Next steps: confirm a senior author (teacher, professor, postdoc, senior grad student, or parent if research is at home), plan for an 8 to 12 month timeline, and start drafting in JEI’s manuscript template. See the Submission roadmap section below.',
       },
       not_a_fit: {
         cls: 'border-rose-300 bg-rose-50 text-rose-900',
         title: 'JEI is not the right venue.',
         body:
-          'JEI requires age 13+, middle or high school, and pre-matriculation submission. If any of those is a no, the student should look at other publication paths. Counselors: keep the student’s research; the venue is the constraint, not the work.',
+          'JEI requires age 13+, middle or high school, and pre-matriculation submission. If any of those is a no, the student should look at other publication paths. Counselors: keep the student’s research and move the venue search.',
       },
       reframe_needed: {
         cls: 'border-amber-300 bg-amber-50 text-amber-900',
         title: 'Reframe likely needed.',
         body:
-          'JEI explicitly rejects manuscripts where the algorithm, method, or invention is the subject of the hypothesis. Many CS and ML projects can still publish at JEI if reframed: the hypothesis must point at a biology, health, physics, chemistry, environmental, or behavioral question, with the algorithm as the tool used to answer it. See the Hypothesis rule section below for good vs reject framings.',
+          'JEI explicitly rejects manuscripts where the algorithm, method, model, invention, or data-mining pattern is the subject of the hypothesis. A computational project may still fit if the hypothesis points at a life-science or experimental physical-science question and the tool only helps test it. See the Hypothesis rule section below for good vs reject framings.',
       },
       reframe_topic: {
         cls: 'border-amber-300 bg-amber-50 text-amber-900',
         title: 'Topic is out of scope.',
         body:
-          'JEI publishes hypothesis-driven natural-science work. Reviews, commentaries, pure math, and non-natural-science topics fall outside scope. If the underlying study can be reformulated as a hypothesis-driven natural-science question, the student may still have a path; if not, JEI is not the right venue.',
+          'JEI publishes hypothesis-driven life-science and experimental physical-science work. Reviews, commentaries, math, statistics, computer science as the subject, theory-only work, and non-natural-science topics fall outside scope. If the underlying study can be reformulated as a qualifying science hypothesis, the student may still have a path.',
+      },
+      case_by_case: {
+        cls: 'border-amber-300 bg-amber-50 text-amber-900',
+        title: 'Case-by-case risk.',
+        body:
+          'JEI lists public health, psychology, social sciences, sociopolitically sensitive topics, meta-analyses, and studies needing extra ethical approval as restricted or case-by-case. Treat JEI as possible but risky, and identify a backup venue before the student commits to this path.',
       },
     };
 
@@ -112,12 +138,15 @@
       const q1 = data.get('q1');
       const q2 = data.get('q2');
       const q3 = data.get('q3');
+      const q4 = data.get('q4');
 
       let key;
       if (q1 === 'no' || q2 === 'no') {
         key = 'not_a_fit';
-      } else if (q3 === 'cs_or_invention') {
+      } else if (q4 === 'tool_subject' || q4 === 'unclear') {
         key = 'reframe_needed';
+      } else if (q3 === 'restricted') {
+        key = 'case_by_case';
       } else if (q3 === 'no') {
         key = 'reframe_topic';
       } else {

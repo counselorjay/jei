@@ -16,14 +16,14 @@ const m = metrics;
         Journal of Emerging Investigators
       </h1>
       <p class="mt-4 text-lg text-ink-500 max-w-prose">
-        A counselor-facing guide to JEI as a publication path for middle and high school natural-science authors. What it is, who it suits, what gets published, and how to submit without tripping the eight most common rejection reasons.
+        A counselor-facing guide to JEI as a publication path for middle and high school natural-science authors. Updated for JEI's March 10, 2026 scope change: life sciences and experimental physical sciences now sit at the center of the submission strategy.
       </p>
       <div class="mt-6 flex flex-wrap gap-3 text-sm">
         <a href="#what-is-jei" class="inline-flex items-center rounded-md bg-accent px-4 py-2 text-white hover:bg-accent-dark">Read the brief</a>
         <a href="#eligibility" class="inline-flex items-center rounded-md border border-accent text-accent-dark px-4 py-2 hover:bg-accent-soft">Check eligibility</a>
       </div>
       <p class="mt-6 text-xs text-ink-500">
-        Snapshot date {m.snapshot_date}. {m.papers_total} papers analyzed across {m.corpus_years[0]} to {m.corpus_years[m.corpus_years.length - 1]}.
+        Dataset snapshot {m.snapshot_date}. {m.papers_total} historical papers analyzed across {m.corpus_years[0]} to {m.corpus_years[m.corpus_years.length - 1]}; current-submission guidance checked against JEI policy on 2026-05-27.
       </p>
     </div>
   </section>
@@ -36,7 +36,10 @@ const m = metrics;
         JEI is the most credible peer-reviewed publication venue for middle and high school students in the natural sciences, and one of the very few that runs an actual editor-driven scientific review of a student manuscript. It has a real ISSN ({m.indexing.issn}), persistent DOIs (prefix {m.indexing.doi_prefix}), Harvard Medical School lineage, and a credentialed editorial board.
       </p>
       <p>
-        It is <strong>not</strong> the same thing as a "scholarly publication" the way a college reader might assume. By JEI's own FAQ, JEI articles are not indexed. PubMed will not return a JEI paper. Google Scholar will not return a JEI paper. DOAJ does not list JEI. The credibility comes from the rigor of the manuscript-writing experience and from the journal's lineage, not from database visibility.
+        JEI tightened its submission scope on March 10, 2026. For new submissions, the safest fit is a student-led hypothesis that tests a measurable question in life sciences or experimental physical sciences. The published archive still contains broader computational, behavioral, social-science, and public-health examples, but those records describe what JEI has published historically. They should not be used as a green light for a new manuscript without checking the current scope page.
+      </p>
+      <p>
+        Treat JEI as a depth credential: real peer review, real DOI, real writing discipline, and limited database visibility. By JEI's own FAQ, JEI articles are not indexed. PubMed, Google Scholar, and DOAJ are the wrong places to look for JEI credibility. The credibility comes from the rigor of the manuscript-writing experience and from the journal's lineage.
       </p>
     </div>
 
@@ -44,7 +47,7 @@ const m = metrics;
       <div class="rounded-lg border border-emerald-300 bg-emerald-50 p-5">
         <h3 class="font-semibold text-emerald-900">JEI is the right move when</h3>
         <ul class="mt-3 space-y-2 text-sm text-emerald-950 list-disc pl-5">
-          <li>The student has run a hypothesis-driven natural-science study and has a senior author (teacher, professor, postdoc, senior grad student, or parent if research was done at home).</li>
+          <li>The student has run a hypothesis-driven life-science or experimental physical-science study and has a senior author (teacher, professor, postdoc, senior grad student, or parent if research was done at home).</li>
           <li>The student is in middle or high school, age 13 or older, and will submit before university enrollment.</li>
           <li>The student wants the actual experience of authoring, revising, and shepherding a manuscript through peer review, and is willing to spend 8 to 12 months on it.</li>
         </ul>
@@ -52,8 +55,9 @@ const m = metrics;
       <div class="rounded-lg border border-rose-300 bg-rose-50 p-5">
         <h3 class="font-semibold text-rose-900">JEI is the wrong move when</h3>
         <ul class="mt-3 space-y-2 text-sm text-rose-950 list-disc pl-5">
-          <li>The project is pure computer science, pure mathematics, pure data mining, an invention or algorithm-as-the-subject, a literature review, or a commentary. Reframing as "ML used to test a biology hypothesis" is the workaround (see section 4).</li>
-          <li>The student needs a credential their reader will recognize from a database search. JEI is a depth credential, not a discovery credential.</li>
+          <li>The project is pure computer science, pure mathematics or statistics, pure data mining, an invention or algorithm-as-the-subject, a literature review, a commentary, or a descriptive/discovery study.</li>
+          <li>The project is psychology, social science, public health, meta-analysis, or sociopolitically sensitive work. JEI now treats these as restricted or case-by-case, so build in an alternate venue plan.</li>
+          <li>The student needs a credential their reader will recognize from a database search. JEI works better as evidence of research depth than as a searchable publication credential.</li>
           <li>The timeline is tight. Plan for 8 to 12 months from submission to PDF.</li>
         </ul>
       </div>
@@ -65,7 +69,7 @@ const m = metrics;
     <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
       <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">2. Eligibility and timeline</h2>
       <p class="mt-3 text-ink-500 max-w-prose">
-        Three structural filters decide whether a student can submit. Use the widget to check.
+        Four structural filters decide whether a student can submit under the current JEI scope. Use the widget to check.
       </p>
 
       <EligibilityWidget />
@@ -90,6 +94,9 @@ const m = metrics;
 
       <div class="mt-6 text-sm text-ink-700 space-y-3 max-w-prose">
         <p>
+          <strong>March 10, 2026 policy update:</strong> JEI now limits its core scope to hypothesis-driven natural-science manuscripts in life sciences and experimental physical sciences. Computer science, mathematics, statistics, theory-only work, reviews, commentaries, discovery/data-mining papers, and method/model/algorithm comparison papers are out of scope unless the tool is used to test a separate science hypothesis.
+        </p>
+        <p>
           <strong>Eligible senior authors:</strong> {m.eligibility.senior_author_eligible.join(', ')}.
         </p>
         <p>
@@ -111,7 +118,7 @@ const m = metrics;
   <section id="what-publishes" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
     <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">3. What gets published</h2>
     <p class="mt-3 text-ink-500 max-w-prose">
-      The {m.papers_total}-paper corpus paints a coherent picture of the student JEI tends to publish. Topic mix first, then methodology, then the modal author and mentor pattern, then geography.
+      The {m.papers_total}-paper corpus is historical archive intelligence. It shows what JEI published from 2022 to early 2026, including articles accepted under the older, broader scope. Use the chart to understand precedent, then apply the March 10, 2026 scope filter before advising a new submission.
     </p>
 
     <TopicDonut />
@@ -120,7 +127,7 @@ const m = metrics;
       <div class="rounded-xl border border-ink-300 bg-white p-6">
         <h3 class="font-semibold text-ink-900">Methodology mix</h3>
         <p class="text-sm text-ink-500 mt-1">
-          Computational slightly outnumbers experimental. "Computational" here means ML, simulation, or image-pipeline applied to a biology, health, physics, or environmental hypothesis. Pure CS is editorially rejected.
+          Computational slightly outnumbers experimental in the historical archive. For new submissions, computational work needs a life-science or experimental physical-science hypothesis where the model serves the scientific claim being tested.
         </p>
         <ul class="mt-4 space-y-2 text-sm">
           {Object.entries(m.methodology_pct).map(([k, v]) => (
@@ -215,9 +222,9 @@ const m = metrics;
       </p>
 
       <div class="mt-6 rounded-lg border border-rose-300 bg-rose-50 p-5 max-w-prose">
-        <p class="font-semibold text-rose-900">The rule</p>
+        <p class="font-semibold text-rose-900">The current rule</p>
         <p class="mt-2 text-sm text-rose-950">
-          JEI explicitly rejects manuscripts where the invention, method, or algorithm is the subject of the hypothesis. Pure CS, pure math, and data-mining are also out of scope.
+          JEI explicitly rejects manuscripts where the invention, method, model, or algorithm is the subject of the hypothesis. Pure CS, pure math, pure statistics, theory-only work, descriptive research, discovery research, and data-mining are also out of scope.
         </p>
       </div>
 
@@ -230,13 +237,20 @@ const m = metrics;
         <div class="rounded-lg border border-emerald-300 bg-white p-5">
           <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">Accepted framing</p>
           <p class="mt-2 text-ink-900 font-medium">"I tested whether retinal vessel curvature predicts diabetic retinopathy progression, using a CNN to extract curvature features."</p>
-          <p class="mt-2 text-sm text-ink-500">Biology hypothesis. ML as instrumentation. This is the dominant published mode.</p>
+        <p class="mt-2 text-sm text-ink-500">Biology hypothesis. ML as instrumentation. This is the dominant published mode.</p>
         </div>
       </div>
 
       <div class="mt-6 rounded-lg border border-ink-300 bg-white p-5 text-sm text-ink-700 max-w-prose">
         <p>
-          The corpus shows {m.topic_distribution_pct.cs_data}% in the CS / data slice, despite the editorial ban on pure CS, because students have learned to reframe ML and computational methods as instrumentation for hypotheses in biology, health, physics, chemistry, environmental, or behavioral science. If the student cannot state the hypothesis without naming the algorithm, the framing is wrong.
+          The historical corpus shows {m.topic_distribution_pct.cs_data}% in the CS / data slice, but that does not make pure CS a current JEI fit. The current standard is stricter: the student needs a measurable life-science or experimental physical-science hypothesis, with ML, simulation, docking, or other computational methods serving as instruments. If the student cannot state the hypothesis without naming the model or algorithm, the project needs a different framing or a different venue.
+        </p>
+      </div>
+
+      <div class="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-5 text-sm text-amber-950 max-w-prose">
+        <p class="font-semibold text-amber-900">Restricted areas need a backup plan</p>
+        <p class="mt-2">
+          JEI lists public health, psychology, social sciences, sociopolitically sensitive topics, meta-analyses, and studies requiring additional ethical approval as restricted or case-by-case. Treat these as counselor-review items before a student invests months in a JEI-first manuscript.
         </p>
       </div>
 
@@ -256,7 +270,7 @@ const m = metrics;
   <section id="roadmap" class="mx-auto max-w-5xl px-4 py-12 md:py-16">
     <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">5. Submission roadmap</h2>
     <p class="mt-3 text-ink-500 max-w-prose">
-      Eight stages from idea to PDF. Numerical ranges are from JEI's own pages where available, and from public counselor-facing guides (Polygence and Aralia) where JEI is silent. JEI's own checklist at submission time is the authoritative source.
+      Eight stages from idea to PDF. Start with the post-March-10 scope check, then build the manuscript. Numerical ranges are from JEI's own pages where available, and from public counselor-facing guides where JEI is silent. JEI's own checklist at submission time is the authoritative source.
     </p>
 
     <ol class="mt-8 space-y-5">
@@ -266,7 +280,7 @@ const m = metrics;
           <h3 class="font-semibold text-ink-900">Idea formation (4 to 8 weeks before drafting)</h3>
         </div>
         <p class="mt-2 text-sm text-ink-700">
-          Choose a hypothesis-driven natural-science question. The student should be able to write the hypothesis as a one-sentence "If X, then Y, because Z" claim. This is the filter that decides whether the paper survives the first reviewer. Confirm category fit (see section 4). Lock in a senior author.
+          Choose a hypothesis-driven life-science or experimental physical-science question. The student should be able to write the hypothesis as a one-sentence measurable prediction with an independent variable, dependent variable, and control or comparison. This is the filter that decides whether the paper survives pre-review. Confirm category fit (see section 4). Lock in a senior author.
         </p>
       </li>
       <li class="rounded-lg border border-ink-300 bg-white p-5">
@@ -275,7 +289,7 @@ const m = metrics;
           <h3 class="font-semibold text-ink-900">Regulatory clearance, if needed (parallel; weeks)</h3>
         </div>
         <p class="mt-2 text-sm text-ink-700">
-          For studies involving human subjects or vertebrate animals, IRB or IACUC documentation must be obtained and submitted with the manuscript. For most school-based projects without human subjects (computational, observational, plant, microbe), this stage is N/A.
+            For studies involving human subjects or vertebrate animals, IRB or IACUC documentation must be obtained and submitted with the manuscript. Public-health, psychology, social-science, and sensitive-topic projects may require extra ethical review and may still be case-by-case under the current JEI scope.
         </p>
       </li>
       <li class="rounded-lg border border-ink-300 bg-white p-5">
@@ -328,7 +342,7 @@ const m = metrics;
           <h3 class="font-semibold text-ink-900">Copy editing (variable; weeks)</h3>
         </div>
         <p class="mt-2 text-sm text-ink-700">
-          A copy editor produces line-level edits in Word with tracked changes; authors review. This is mechanical, not scientific.
+          A copy editor produces line-level edits in Word with tracked changes; authors review. This stage handles mechanics after scientific review.
         </p>
       </li>
       <li class="rounded-lg border border-ink-300 bg-white p-5">
@@ -337,7 +351,7 @@ const m = metrics;
           <h3 class="font-semibold text-ink-900">Publishing (variable; weeks)</h3>
         </div>
         <p class="mt-2 text-sm text-ink-700">
-          A Proofing Editor produces the final PDF. The author's final pass is intentionally not a copy-edit pass. DOI is minted ({m.indexing.doi_prefix}/<id>). The article appears on emerginginvestigators.org/articles. JEI articles are not indexed in PubMed or Google Scholar; that is by design and not a defect.
+          A Proofing Editor produces the final PDF. The author's final pass is for proof approval. DOI is minted ({m.indexing.doi_prefix}/<id>). The article appears on emerginginvestigators.org/articles. JEI articles are not indexed in PubMed or Google Scholar; JEI says this directly in its FAQ.
         </p>
       </li>
     </ol>
@@ -348,7 +362,7 @@ const m = metrics;
     <div class="mx-auto max-w-5xl px-4 py-12 md:py-16">
       <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">6. Common pitfalls</h2>
       <p class="mt-3 max-w-prose text-ink-700">
-        Per JEI's FAQ, the most common rejection reasons fall into eight mechanical categories plus the structural hypothesis-fit rule. A counselor running a basic pre-submission audit eliminates six of the eight.
+        Per JEI's FAQ, the most common rejection reasons fall into eight mechanical categories plus the structural hypothesis-fit rule. A counselor running a basic pre-submission audit eliminates most preventable failures.
       </p>
 
       <h3 class="mt-8 font-semibold text-ink-900">Mechanical (eliminable with a checklist)</h3>
@@ -361,7 +375,7 @@ const m = metrics;
         <div class="rounded-lg border border-ink-300 bg-white p-5">
           <p class="font-semibold text-ink-900">Hypothesis fails the natural-science test</p>
           <p class="mt-2 text-sm text-ink-700">
-            See section 4. The single most consequential authoring decision. Catch it at idea formation, not after months of work.
+            See section 4. The current test is narrower than the historical archive suggests. Catch scope fit at idea formation, before the student spends months on a manuscript JEI may screen out.
           </p>
         </div>
         <div class="rounded-lg border border-ink-300 bg-white p-5">
@@ -392,7 +406,7 @@ const m = metrics;
       </a>
       <a href="https://emerginginvestigators.org/submissions/hypothesis-driven-research" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
         <p class="font-semibold text-ink-900">Hypothesis-driven research</p>
-        <p class="mt-1 text-sm text-ink-500">The editorial scope page. Read this before starting any project that leans CS, ML, or invention-build.</p>
+        <p class="mt-1 text-sm text-ink-500">The editorial scope page. Read this before starting any project that leans CS, ML, public health, psychology, social science, modeling, or invention-build.</p>
       </a>
       <a href="https://emerginginvestigators.org/submissions/faq" target="_blank" rel="noopener noreferrer" class="block rounded-lg border border-ink-300 bg-white p-5 hover:border-accent">
         <p class="font-semibold text-ink-900">FAQ</p>
@@ -405,11 +419,13 @@ const m = metrics;
     </div>
 
     <div class="mt-8 rounded-lg border border-warn/40 bg-warn-soft p-5 text-sm text-ink-700">
-      <p class="font-semibold text-warn">Always verify fees on JEI's own checklist.</p>
+      <p class="font-semibold text-warn">Always verify scope and fees on JEI's own pages.</p>
       <p class="mt-2">
-        Public counselor-facing guides have published conflicting numbers. JEI's
+        Public counselor-facing guides and old JEI archive patterns can lag current policy. JEI's
         <a class="underline hover:text-accent-dark" target="_blank" rel="noopener noreferrer" href={m.submission_fee_source}>own checklist</a>
-        is the only authoritative source. Fees, waivers, and policies can change; check at the moment of submission rather than relying on secondary summaries.
+        and
+        <a class="underline hover:text-accent-dark" target="_blank" rel="noopener noreferrer" href={m.explicit_topic_exclusions_source}>scope page</a>
+        are the authoritative sources. Fees, waivers, and policies can change; check at the moment of submission rather than relying on secondary summaries.
       </p>
     </div>
   </section>

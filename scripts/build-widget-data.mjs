@@ -117,6 +117,9 @@ const out = {
   generated_at: new Date().toISOString(),
   source: 'research/02_iris_articles_full.jsonl',
   corpus_total: metrics.papers_total,
+  policy_checked_date: metrics.policy_checked_date,
+  current_scope_effective_date: metrics.current_scope_effective_date,
+  current_scope_summary: metrics.current_scope_summary,
   topic_distribution_pct: metrics.topic_distribution_pct,
   topic_examples: examples,
   // for the geography heatmap
