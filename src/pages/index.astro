@@ -202,10 +202,10 @@ const m = metrics;
       <p class="text-sm text-ink-500 mt-1">
         Three buckets: Bay Area public-magnet pipelines, East Coast magnets and prep schools, and dedicated research programs (notably ASDRP). Counselors with clients outside these ecosystems should know the long tail of one-off schools is still the majority of the corpus.
       </p>
-      <ul class="mt-4 grid sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm">
+      <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-1 text-sm">
         {m.recurring_lead_schools.map((row) => (
           <li class="flex justify-between border-b border-ink-300/40 py-1">
-            <span class="text-ink-900 truncate pr-2">{row[0]}</span>
+            <span class="min-w-0 truncate pr-2 text-ink-900">{row[0]}</span>
             <span class="text-ink-500 tabular-nums">{row[1]}</span>
           </li>
         ))}
